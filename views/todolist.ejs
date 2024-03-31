@@ -1,0 +1,30 @@
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>To do list</title>
+</head>
+
+<body>
+    <h1>To do list</h1>
+    <form method="POST" action="/tache">
+        <input type="text" name="task" placeholder="tache" autofocus required/>
+        <button type="submit">Ajouter</button>
+    </form>
+    <h1>Taches</h1>
+    <ul>
+        <%Tache.forEach((task,idx)=>{%>
+            <li>
+                <strong><%=idx %></strong>
+                <%=task.title %>
+                    <% if(task.done==true) { %>
+                        <a href="/task/<%= idx %>/done">terminer</a>
+                        <%}else {%>
+                            <a href="/task/<%= idx %>/delete">supprimer</a>
+                        <%} %>
+            </li>
+            <% }); %>
+    </ul>
+</body>
+
+</html>
